@@ -1,5 +1,6 @@
 package calculator.app;
 
+import java.security.InvalidParameterException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,6 +8,13 @@ public class Tokenizer {
 
 	private final Pattern PATTERN=  Pattern.compile("(\\d+(\\.\\d+)?)|[-+x/%]+");
 	private Matcher expression;
+	
+	
+	public void set(String expression) {
+		if (checkExpression(expression) == false)
+			throw new InvalidParameterException("Invalid expression"); 
+	}
+	
 	
 	public boolean checkExpression(String expression) {
 	
@@ -17,12 +25,10 @@ public class Tokenizer {
 		
 		while (temp.find()) {
 			String current = temp.group();
-//			System.out.println(current);
 			if (isNumeric(current)) 
 				countNumber++;
 			else
 				countOperator++;
-			
 		}
 		if (countNumber == countOperator+1) {
 			return true;
