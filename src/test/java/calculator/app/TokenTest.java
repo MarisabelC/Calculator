@@ -20,4 +20,19 @@ class TokenTest {
 		boolean result = token.isNumeric();
 		assertFalse(result);
 	}
+	
+	@Test
+	void getNumericValueTest() {
+		token = new Token("896", Type.NUMBER);
+		String result = token.getValue();
+		assertEquals("896", result);
+	}
+	
+	@Test
+	void getOperatorValueTest() {
+		token = new Token("%", Type.OPERATOR);
+		String result = token.getValue();
+		assertEquals("%", result);
+	}
+	
 }
