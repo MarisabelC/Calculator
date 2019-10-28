@@ -6,12 +6,22 @@ public class Operator {
 		return LHS + RHS;
 	}
 
-	public double substract(double LHS, double RHS) {
+	public double subtract(double LHS, double RHS) {
 		return LHS-RHS;
 	}
 	
 	public double multiply(double LHS, double RHS) {
 		return LHS*RHS;
+	}
+	
+	public double divide(double dividend, double divisor) {
+		if (isDivisorEqualsZero(divisor))
+			throw new ArithmeticException("/ by zero");
+		return dividend/divisor;
+	}
+	
+	private boolean isDivisorEqualsZero(double divisor) {
+		return divisor == 0;
 	}
 
 	

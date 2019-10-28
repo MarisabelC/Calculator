@@ -28,20 +28,20 @@ class OperatorTest {
 	
 	
 	@Test 
-	void checkSubstractTest() {
-		double result =operator.substract(9,6);
+	void checkSubtractTest() {
+		double result =operator.subtract(9,6);
 		assertEquals(3,result);
 	}
 
 	@Test 
-	void checkSubstractNegativeResultTest() {
-		double result =operator.substract(9,16);
+	void checkSubtractNegativeResultTest() {
+		double result =operator.subtract(9,16);
 		assertEquals(-7,result);
 	}
 	
 	@Test 
-	void checkSubstracDoubletNegativeResultTest() {
-		double result =operator.substract(90,26);
+	void checkSubtractDoubletNegativeResultTest() {
+		double result =operator.subtract(90,26);
 		assertEquals(64,result);
 	}
 	
@@ -61,5 +61,23 @@ class OperatorTest {
 	void checkMultiplyDoubleTest() {
 		double result =operator.multiply(2.2,5);
 		assertEquals(11,result);
+	}
+	
+	@Test
+	void checkDiviveByZeroTest() {
+		 assertThrows(ArithmeticException.class, () -> {
+		        operator.divide(15, 0);});
+	}
+	
+	@Test
+	void checkDivideTest() {
+		double result =operator.divide(9,6);
+		assertEquals(1.5,result,0.001);
+	}
+	
+	@Test
+	void checkDivideDoubleTest() {
+		double result =operator.divide(9.3,3.1);
+		assertEquals(3,result,0.001);
 	}
 }
