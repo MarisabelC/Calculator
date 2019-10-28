@@ -58,6 +58,13 @@ class TokenizerTest {
 		}
 	}
 	
+	@Test 
+	void checkMoreToken() {
+		expression= new Tokenizer();
+		expression.set("8-3");
+		boolean result = expression.isMoreToken();
+		assertTrue(result);
+	}
 	
 }
 

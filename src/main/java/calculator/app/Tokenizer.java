@@ -21,15 +21,15 @@ public class Tokenizer {
 		if (expression == null) return false;
 		matchPattern(expression);
 		int countOperator=0, countNumber=0;
-		Matcher temp = this.expression;
-		
-		while (temp.find()) {
-			String current = temp.group();
+		while (this.expression.find()) {
+			String current = this.expression.group();
 			if (isNumeric(current)) 
 				countNumber++;
 			else
 				countOperator++;
 		}
+		this.expression.find(0);
+		
 		if (countNumber == countOperator+1) {
 			return true;
 		}
@@ -49,4 +49,8 @@ public class Tokenizer {
 		 expression = PATTERN.matcher(str);
 	}
 
+	
+	public boolean isMoreToken() {
+		return expression.find();
+	}
 }
