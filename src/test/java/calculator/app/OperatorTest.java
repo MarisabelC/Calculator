@@ -77,7 +77,19 @@ class OperatorTest {
 	
 	@Test
 	void checkDivideDoubleTest() {
-		double result =operator.divide(9.3,3.1);
+		double result = operator.divide(9.3,3.1);
 		assertEquals(3,result,0.001);
+	}
+	
+	@Test
+	void checkModTest() {
+		double result = operator.mod(9,3);
+		assertEquals(0,result);
+	}
+	
+	@Test
+	void checkModByZeroTest() {
+		 assertThrows(ArithmeticException.class, () -> {
+		        operator.mod(15, 0);});
 	}
 }

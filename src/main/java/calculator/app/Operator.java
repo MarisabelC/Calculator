@@ -14,7 +14,7 @@ public class Operator {
 		return LHS*RHS;
 	}
 	
-	public double divide(double dividend, double divisor) {
+	public double divide(double dividend, double divisor) throws ArithmeticException{
 		if (isDivisorEqualsZero(divisor))
 			throw new ArithmeticException("/ by zero");
 		return dividend/divisor;
@@ -22,6 +22,12 @@ public class Operator {
 	
 	private boolean isDivisorEqualsZero(double divisor) {
 		return divisor == 0;
+	}
+
+	public double mod(double LHS, double RHS)throws ArithmeticException{
+		if (isDivisorEqualsZero(RHS))
+			throw new ArithmeticException("/ by zero");
+		return (LHS % RHS + RHS) % RHS;
 	}
 
 	
