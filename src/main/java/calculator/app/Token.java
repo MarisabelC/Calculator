@@ -18,5 +18,11 @@ public class Token {
 	   return type == Type.NUMBER;
 	}
 	
+	@Override 
+	public boolean equals(Object other) {
+		if (other instanceof Token)
+			return ((Token)other).getValue().equals(value);
+		return false;
+	}
 	
 }
