@@ -23,7 +23,6 @@ class OperatorTest {
 	@Test
 	void checkAddDoubleTest() {
 		double result =operator.add(9.8,6.4);
-		System.out.print(result);
 		assertEquals(16.2,result,0.001);
 	}
 	
@@ -31,21 +30,36 @@ class OperatorTest {
 	@Test 
 	void checkSubstractTest() {
 		double result =operator.substract(9,6);
-		System.out.print(result);
 		assertEquals(3,result);
 	}
 
 	@Test 
 	void checkSubstractNegativeResultTest() {
 		double result =operator.substract(9,16);
-		System.out.print(result);
 		assertEquals(-7,result);
 	}
 	
 	@Test 
 	void checkSubstracDoubletNegativeResultTest() {
 		double result =operator.substract(90,26);
-		System.out.print(result);
 		assertEquals(64,result);
+	}
+	
+	@Test
+	void checkMultiplyTest() {
+		double result =operator.multiply(9,5);
+		assertEquals(45,result);
+	}
+	
+	@Test
+	void checkMultiplyByZeroTest() {
+		double result =operator.multiply(0,5);
+		assertEquals(0,result);
+	}
+	
+	@Test
+	void checkMultiplyDoubleTest() {
+		double result =operator.multiply(2.2,5);
+		assertEquals(11,result);
 	}
 }

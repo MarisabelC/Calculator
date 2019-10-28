@@ -10,7 +10,9 @@ public class Operator {
 		return LHS-RHS;
 	}
 	
-
+	public double multiply(double LHS, double RHS) {
+		return LHS*RHS;
+	}
 
 	
 
