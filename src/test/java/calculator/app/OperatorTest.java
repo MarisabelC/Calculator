@@ -28,6 +28,24 @@ class OperatorTest {
 	}
 	
 	
-	
+	@Test 
+	void checkSubstractTest() {
+		double result =operator.substract(9,6);
+		System.out.print(result);
+		assertEquals(3,result);
+	}
 
+	@Test 
+	void checkSubstractNegativeResultTest() {
+		double result =operator.substract(9,16);
+		System.out.print(result);
+		assertEquals(-7,result);
+	}
+	
+	@Test 
+	void checkSubstracDoubletNegativeResultTest() {
+		double result =operator.substract(90,26);
+		System.out.print(result);
+		assertEquals(64,result);
+	}
 }
