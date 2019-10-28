@@ -10,9 +10,9 @@ public class Tokenizer {
 	private Matcher expression;
 	
 	
-	public void set(String expression) {
+	public void set(String expression) throws InvalidParameterException{
 		if (checkExpression(expression) == false)
-			throw new InvalidParameterException("Invalid expression"); 
+			throw new InvalidParameterException("Invalid expression. Expression must be in the infix form  9 / 2.5 "); 
 	}
 	
 	

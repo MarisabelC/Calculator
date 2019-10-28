@@ -36,12 +36,8 @@ class TokenizerTest {
 	
 	@Test 
 	void setValidExpressionTest() {
-		try {
-			expression= new Tokenizer();
-			expression.set("15/3");
-		}catch(InvalidParameterException e) {
-			System.out.println(e);
-		}
+		expression= new Tokenizer();
+		expression.set("15/3");
 	}
 	
 	@Test 
