@@ -1,0 +1,10 @@
+.git
+Dockerfile
+.gitignore
+README.md
+.gitattributes
+.DS_Store
+.classpath
+.project
+
+
