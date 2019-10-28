@@ -28,7 +28,7 @@ public class Tokenizer {
 			else
 				countOperator++;
 		}
-		this.expression.find(0);
+		this.expression.reset();
 		
 		if (countNumber == countOperator+1) {
 			return true;
@@ -49,8 +49,27 @@ public class Tokenizer {
 		 expression = PATTERN.matcher(str);
 	}
 
+	public Token getNextToken() {
+		String str=expression.group(); 
+		Type type= getType(str);
+		Token token= new Token(str, type);
+		return token;
+	}
+
+
+	private Type getType(String str) {
+		Type type;
+		if (isNumeric(str))
+			type=Type.NUMBER;
+		else 
+			type= Type.OPERATOR;
+		return type;
+	}
+	
 	
 	public boolean isMoreToken() {
 		return expression.find();
 	}
+	
 }
+

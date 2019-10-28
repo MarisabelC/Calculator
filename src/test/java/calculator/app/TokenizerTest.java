@@ -66,5 +66,33 @@ class TokenizerTest {
 		assertTrue(result);
 	}
 	
+	
+	@Test 
+	void getNextTokenTest() {
+		expression= new Tokenizer();
+		expression.set(" 30 % 5");
+		expression.isMoreToken();
+		Token token= expression.getNextToken();
+		assertEquals("30", token.getValue());
+	}
+	
+	@Test
+	void getAllTokensTest() {
+		Token token;
+		expression= new Tokenizer();
+		expression.set(" 8 / 5");
+		expression.isMoreToken();
+		token= expression.getNextToken();
+		assertEquals("8", token.getValue());
+		expression.isMoreToken();
+		token= expression.getNextToken();
+		assertEquals("/", token.getValue());
+		expression.isMoreToken();
+		token= expression.getNextToken();
+		assertEquals("5", token.getValue());
+		boolean result = expression.isMoreToken();
+		assertFalse(result);
+	}
+	
 }
 
