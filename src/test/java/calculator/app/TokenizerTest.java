@@ -4,52 +4,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.security.InvalidParameterException;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class TokenizerTest {
-	Tokenizer expression;
+	static Tokenizer expression;
 	
-
-	@Test
-	void checkValidExpressiontest() {
-		expression= new Tokenizer() ;
-		boolean result=expression.checkExpression("3 + 5");
-		assertTrue(result);
+	@BeforeAll 
+	static void setup() {
+		expression = new Tokenizer();
 	}
 	
 	@Test
-	void checkValidDivisionExpressiontest() {
-		expression= new Tokenizer() ;
-		boolean result=expression.checkExpression("3 / 5.2");
-		assertTrue(result);
+	void checkSetNulltest() {
+		assertThrows(InvalidParameterException.class, () -> {
+			expression.set("null");});
 	}
 	
 	@Test
-	void checkNulltest() {
-		expression= new Tokenizer() ;
-		boolean result=expression.checkExpression(null);
-		assertFalse(result);
-	}
-	
-	@Test
-	void checkInvalidExpressiontest() {
-		expression= new Tokenizer() ;
-		boolean result=expression.checkExpression("5+6x");
-		assertFalse(result);
+	void checkInvalidExpressionTest() {
+		assertThrows(InvalidParameterException.class, () -> {
+			expression.set("x5+6");});
 	}
 	
 	@Test 
-	void setInvalidExpression() {
-		try {
-			expression= new Tokenizer();
-			expression.set("23+5+");
-		}catch(InvalidParameterException e) {
-			System.out.println(e);
-		}
+	void setInvalidExpressionTest() {
+		expression= new Tokenizer();
+		assertThrows(InvalidParameterException.class, () -> {
+			expression.set("23+5+");});
 	}
 	
 	@Test 
-	void setValidExpression() {
+	void setValidExpressionTest() {
 		try {
 			expression= new Tokenizer();
 			expression.set("15/3");
@@ -59,7 +45,7 @@ class TokenizerTest {
 	}
 	
 	@Test 
-	void checkMoreToken() {
+	void checkMoreTokenTest() {
 		expression= new Tokenizer();
 		expression.set("8-3");
 		boolean result = expression.isMoreToken();

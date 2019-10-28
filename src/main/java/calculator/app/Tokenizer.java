@@ -16,7 +16,7 @@ public class Tokenizer {
 	}
 	
 	
-	public boolean checkExpression(String expression) {
+	private boolean checkExpression(String expression) {
 	
 		if (expression == null) return false;
 		matchPattern(expression);
