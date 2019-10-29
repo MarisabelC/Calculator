@@ -12,11 +12,7 @@ public class Evaluator {
 	}
 
 	public void setExpression(String expression) {
-		try {
 			tokenizer.set(expression);
-		} catch (InvalidParameterException e) {
-			System.out.println(e);
-		}
 	}
 
 	public double getTotal() {
