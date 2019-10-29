@@ -23,7 +23,7 @@ public class Evaluator {
 		double LHS = Double.parseDouble(getNextToken(tokenizer).getValue());
 		String operator = getNextToken(tokenizer).getValue();
 		double RHS = Double.parseDouble(getNextToken(tokenizer).getValue());
-		return assignOperator(LHS, RHS, operator);
+		return assignOperator(LHS, RHS, operator.charAt(0));
 	}
 
 	private Token getNextToken(Tokenizer tokenizer) throws NoSuchElementException {
@@ -32,18 +32,18 @@ public class Evaluator {
 		throw new NoSuchElementException("No more token");
 	}
 
-	private double assignOperator(double LHS, double RHS, String operator) {
+	private double assignOperator(double LHS, double RHS, char operator) {
 		Operator total = new Operator();
 		switch (operator) {
-		case "+":
+		case '+':
 			return total.add(LHS, RHS);
-		case "-":
+		case '-':
 			return total.subtract(LHS, RHS);
-		case "x":
+		case 'x':
 			return total.multiply(LHS, RHS);
-		case "/":
+		case '/':
 			return total.divide(LHS, RHS);
-		case "%":
+		case '%':
 			return total.mod(LHS, RHS);
 		default:
 		}
