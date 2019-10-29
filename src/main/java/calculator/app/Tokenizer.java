@@ -6,7 +6,8 @@ import java.util.regex.Pattern;
 
 public class Tokenizer {
 
-	private final Pattern PATTERN=  Pattern.compile("(\\d+(\\.\\d+)?)|[-+x/%]+");
+	//(?<!(\\d\\s{0,10})-)?
+	private final Pattern PATTERN=  Pattern.compile("((\\d+(\\.\\d+)?))|[-+x/%]+");
 	private Matcher expression;
 	
 	
@@ -39,7 +40,9 @@ public class Tokenizer {
 	private boolean isNumeric(String strNum) {
 	    try {
 	        Double.parseDouble(strNum);
-	    } catch (NumberFormatException | NullPointerException nfe) {
+	    } catch (NumberFormatException e) {
+	    	 return false;
+	    }catch (NullPointerException nfe) {
 	        return false;
 	    }
 	    return true;
