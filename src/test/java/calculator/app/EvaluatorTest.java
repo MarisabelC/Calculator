@@ -2,6 +2,8 @@ package calculator.app;
 
 import static org.junit.Assert.*;
 
+import java.security.InvalidParameterException;
+
 import org.junit.Test;
 
 public class EvaluatorTest {
@@ -14,7 +16,7 @@ public class EvaluatorTest {
 		evaluator.setExpression("5+2");
 	}
 	
-	@Test
+	@Test (expected = InvalidParameterException.class)
 	public void  checkSetInvalidExpressionTest() {
 		evaluator = new Evaluator();
 		evaluator.setExpression("5+2-");
