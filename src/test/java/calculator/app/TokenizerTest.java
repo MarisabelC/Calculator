@@ -1,47 +1,45 @@
 package calculator.app;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.security.InvalidParameterException;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
-class TokenizerTest {
-	static Tokenizer expression;
+
+public class TokenizerTest {
+	Tokenizer expression;
 	
-	@BeforeAll 
-	static void setup() {
+	@Before 
+	public void  setup() {
 		expression = new Tokenizer();
 	}
 	
-	@Test
-	void checkSetNulltest() {
-		assertThrows(InvalidParameterException.class, () -> {
-			expression.set("null");});
+	@Test (expected = InvalidParameterException.class)
+	public void  checkSetNulltest() {
+		expression.set("null");
 	}
 	
-	@Test
-	void checkInvalidExpressionTest() {
-		assertThrows(InvalidParameterException.class, () -> {
-			expression.set("x5+6");});
+	@Test  (expected = InvalidParameterException.class)
+	public void  checkInvalidExpressionTest() {
+		expression.set("x5+6");
 	}
 	
-	@Test 
-	void setInvalidExpressionTest() {
-		expression= new Tokenizer();
-		assertThrows(InvalidParameterException.class, () -> {
-			expression.set("23+5+");});
+	@Test  (expected = InvalidParameterException.class)
+	public void  setInvalidExpressionTest() {
+		expression.set("23+5+");
 	}
 	
 	@Test 
-	void setValidExpressionTest() {
-		expression= new Tokenizer();
+	public void  setValidExpressionTest() {
 		expression.set("15/3");
 	}
 	
+	
 	@Test 
-	void checkMoreTokenTest() {
+	public void  checkMoreTokenTest() {
 		expression= new Tokenizer();
 		expression.set("8-3");
 		boolean result = expression.isMoreToken();
@@ -50,7 +48,7 @@ class TokenizerTest {
 	
 	
 	@Test 
-	void getNextTokenTest() {
+	public void  getNextTokenTest() {
 		expression= new Tokenizer();
 		expression.set(" 30 % 5");
 		expression.isMoreToken();
@@ -59,7 +57,7 @@ class TokenizerTest {
 	}
 	
 	@Test
-	void getAllTokensTest() {
+	public void  getAllTokensTest() {
 		Token token;
 		expression= new Tokenizer();
 		expression.set(" 8 / 5");
@@ -76,5 +74,22 @@ class TokenizerTest {
 		assertFalse(result);
 	}
 	
+//	@Test
+//	public void  getAllTokensWithNegativeNumberTest() {
+//		Token token;
+//		expression= new Tokenizer();
+//		expression.set(" 18 + -5");
+//		expression.isMoreToken();
+//		token= expression.getNextToken();
+//		assertEquals("18", token.getValue());
+//		expression.isMoreToken();
+//		token= expression.getNextToken();
+//		assertEquals("+", token.getValue());
+//		expression.isMoreToken();
+//		token= expression.getNextToken();
+//		assertEquals("-5", token.getValue());
+//		boolean result = expression.isMoreToken();
+//		assertFalse(result);
+//	}
 }
 

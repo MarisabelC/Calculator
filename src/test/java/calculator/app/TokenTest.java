@@ -1,35 +1,34 @@
 package calculator.app;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class TokenTest {
+public class TokenTest {
 
 	Token token;
 	@Test
-	void isNumericTest() {
+	public void  isNumericTest() {
 		token = new Token("68", Type.NUMBER);
 		boolean result = token.isNumeric();
 		assertTrue(result);
 	}
 
 	@Test
-	void isOperatorTest() {
+	public void  isOperatorTest() {
 		token = new Token("-", Type.OPERATOR);
 		boolean result = token.isNumeric();
 		assertFalse(result);
 	}
 	
 	@Test
-	void getNumericValueTest() {
+	public void  getNumericValueTest() {
 		token = new Token("896", Type.NUMBER);
 		String result = token.getValue();
 		assertEquals("896", result);
 	}
 	
 	@Test
-	void getOperatorValueTest() {
+	public void  getOperatorValueTest() {
 		token = new Token("%", Type.OPERATOR);
 		String result = token.getValue();
 		assertEquals("%", result);
